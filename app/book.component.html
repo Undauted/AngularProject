@@ -1,0 +1,15 @@
+﻿
+<h2>Książka adresowa</h2>
+<ul class="address">
+	<li *ngFor="let book of address" 
+		(click)="onSelect(book)"
+		[class.selected]="book === selectedBook">
+		<span class="badge">{{book.id}}</span> {{book.name}} {{book.surname}}
+	</li>
+</ul>
+<div *ngIf="selectedBook">
+	<h2>
+		{{selectedBook.name}} {{selectedBook.surname}} jest fajny
+	</h2>
+	<button (click)="gotoDetail()">Szczegóły</button>
+</div>

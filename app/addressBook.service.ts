@@ -14,4 +14,10 @@ export class BookService {
       setTimeout(()=>resolve(BOOK), 2000) // 2 seconds
     );
   }
+  
+  getId(id: number) {
+	return Promise.resolve(BOOK).then(
+    address => address.filter(book => book.id === id)[0]
+	);
+  }
 }
