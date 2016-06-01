@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { AddressBook } from './book';
 import { AddressBookDetailComponent } from './book-detail.component';
+import { BookService } from './addressBook.service';
 @Component({
     selector: 	'projekt-angular',
     template: 	`<h1>{{title}}</h1>
@@ -62,21 +64,25 @@ import { AddressBookDetailComponent } from './book-detail.component';
 				border-radius: 4px 0 0 4px;
 			  }
 			`],
-	directives: [AddressBookDetailComponent]
+	directives: [AddressBookDetailComponent],
+	providers: [BookService]
 })
-export class AppComponent {
-	title = 'Projekt Angular - Piotr Kacprowicz';
-	selectedBook: AddressBook;
-	address = BOOK;
-	
-	onSelect(book: AddressBook) { this.selectedBook = book; }
+export class AppComponent implements OnInit {
+  title = 'Projekt Angular - Piotr Kacprowicz';
+  address: AddressBook[];
+  selectedBook: AddressBook;
+
+  constructor(private bookService: BookService) { }
+
+  getBook() {
+    this.bookService.getBook().then(address => this.address = address);
+  }
+
+  ngOnInit() {
+    this.getBook();
+  }
+
+  onSelect(book: AddressBook) { this.selectedBook = book; }
 }
 
-var BOOK: AddressBook[] = [
-{ "id": 1, "name": "Jan", "surname": "Kowalski" },
-{ "id": 2, "name": "Piotr", "surname": "Kacprowicz" },
-{ "id": 3, "name": "Andrzej", "surname": "Nowak" },
-{ "id": 4, "name": "Karol", "surname": "Markowski" },
-{ "id": 5, "name": "Joanna", "surname": "Tracz" },
-{ "id": 6, "name": "Stefan", "surname": "Tusk" }
-];
+
