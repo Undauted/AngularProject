@@ -12,6 +12,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 					<a [routerLink]="['AddressBooks']">Address Books</a>
 				</nav>
 				<router-outlet></router-outlet>`,
+	
 	directives: [ROUTER_DIRECTIVES],
 	providers: 	[
 				ROUTER_PROVIDERS,
