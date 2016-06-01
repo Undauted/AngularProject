@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import { AddressBook } from './book';
+import { AddressBookDetailComponent } from './book-detail.component';
 @Component({
     selector: 	'projekt-angular',
     template: 	`<h1>{{title}}</h1>
@@ -10,7 +11,8 @@ import { AddressBook } from './book';
 					   [class.selected]="book === selectedBook">
 					 <span class="badge">{{book.id}}</span> {{book.name}} {{book.surname}}
 				  </li>
-				</ul>`,
+				</ul>
+				<my-addressBook-detail [book]="selectedBook"></my-addressBook-detail>`,
 	styles:[`
 			  .selected {
 				background-color: #CFD8DC !important;
@@ -59,7 +61,8 @@ import { AddressBook } from './book';
 				margin-right: .8em;
 				border-radius: 4px 0 0 4px;
 			  }
-			`]
+			`],
+	directives: [AddressBookDetailComponent]
 })
 export class AppComponent {
 	title = 'Projekt Angular - Piotr Kacprowicz';

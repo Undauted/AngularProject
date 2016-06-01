@@ -18,5 +18,6 @@ import { AddressBook } from './book';
 
 })
 export class AddressBookDetailComponent {
+	@Input()
 	book: AddressBook;
 }
