@@ -1,5 +1,5 @@
 			 .selected {
-				background-color: #CFD8DC !important;
+				background-color: #CFD8DC ;
 				color: white;
 			  }
 			  .address {
@@ -19,7 +19,7 @@
 				border-radius: 4px;
 			  }
 			  .address li.selected:hover {
-				background-color: #BBD8DC !important;
+				background-color: #BBD8DC ;
 				color: white;
 			  }
 			  .address li:hover {

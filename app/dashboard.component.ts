@@ -14,7 +14,7 @@ export class MainComponent {
 	constructor(private router: Router,
 				private bookService: BookService) { }
 	ngOnInit() {
-    this.bookService.getBook().then(address => this.address = address.slice(1,5));
+    this.bookService.getBook().then(address => this.address = address);
   }
   gotoDetail(book: AddressBook) {
   let link = ['BookDetail', { id: book.id }];

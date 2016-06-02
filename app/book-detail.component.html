@@ -1,6 +1,7 @@
 <div *ngIf="book">
-	<h2>{{book.name}} {{book.surname}} details!</h2>
-	<div><label>id: </label>{{book.id}}</div>
+	<h2>{{book.name}} {{book.surname}}</h2>
+	<h2>{{book.street}} {{book.number}} {{book.city}}</h2>
+	<h2>Telefon: {{book.phone}}</h2>
 	<div>
 		<label>Imie: </label>
 		<input [(ngModel)]="book.name" placeholder="name">
@@ -8,6 +9,22 @@
 	<div>
 		<label>Nazwisko: </label>
 		<input [(ngModel)]="book.surname" placeholder="surname">
+	</div>
+	<div>
+		<label>Ulica: </label>
+		<input [(ngModel)]="book.street" placeholder="street">
+	</div>
+	<div>
+		<label>Numer: </label>
+		<input [(ngModel)]="book.number" placeholder="number">
+	</div>
+	<div>
+		<label>Miasto: </label>
+		<input [(ngModel)]="book.city" placeholder="city">
+	</div>
+	<div>
+		<label>Telefon: </label>
+		<input [(ngModel)]="book.phone" placeholder="phone">
 	</div>
 	<button (click)="goBack()">Back</button>
 	<button (click)="save()">Save</button>

@@ -35,7 +35,7 @@ export class BookComponent implements OnInit {
 
   close(savedBook: AddressBook) {
     this.addingBook = false;
-    if (savedBook) { this.getBook(); }
+    if (savedBook) {  this.bookService.getBook().then(address => this.address = address.slice(6,123232131333));}
   }
 
   delete(book: AddressBook, event: any) {
@@ -50,7 +50,7 @@ export class BookComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getBook();
+    this.bookService.getBook().then(address => this.address = address.slice(6,123232131333));
   }
 
   onSelect(book: AddressBook) {
