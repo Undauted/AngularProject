@@ -1,39 +1,42 @@
-import {Component} from '@angular/core';
-
-export class AddressBook {
-  id: number;
-  name: string;
-  surname: string;
-  
-}
+import { Component }       from '@angular/core';
+import { BookService } from './addressBook.service';
+import { BookComponent } from './book.component';
+import { MainComponent } from './dashboard.component';
+import { AddressBookDetailComponent } from './book-detail.component';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 @Component({
-    selector: 'projekt-angular',
-    template: 	`<h1>{{title}}</h1>
-				<h2>{{book.name}} {{book.surname}} details!</h2>
-				<div><label>id: </label>{{book.id}}</div>
-				<div>
-					<label>Imie: </label>
-					<input [(ngModel)]="book.name" placeholder="name">
-			    </div>
-				<div>
-					<label>Nazwisko: </label>
-					<input [(ngModel)]="book.surname" placeholder="surname">
-			    </div>`
+	selector: 	'projekt-angular',
+	template:  	`<h1>{{title}}</h1>
+				<nav>
+					<a [routerLink]="['Main']" class="btn btn-primary" name="ksiazka">Książka adresowa</a>
+					<a [routerLink]="['AddressBooks']" class="btn btn-primary">Moje kontakty</a>
+				</nav>
+				<router-outlet></router-outlet>`,
+	
+	directives: [ROUTER_DIRECTIVES],
+	providers: 	[
+				ROUTER_PROVIDERS,
+				BookService]
 })
-export class AppComponent {
-  title = 'Projekt Angular - Piotr Kacprowicz';
-  book: AddressBook = {
-	  id: 1,
-	  name: 'Jan'
-	  surname: 'Kowalski'
-	};
+@RouteConfig([
+{
+    path: '/books',
+    name: 'AddressBooks',
+    component: BookComponent
+},
+{
+  path: '/main',
+  name: 'Main',
+  component: MainComponent,
+  useAsDefault: true
+},
+{
+  path: '/detail/:id',
+  name: 'BookDetail',
+  component: AddressBookDetailComponent
 }
 
-var HEROES: Hero[] = [
-{ "id": 1, "name": "Jan", "surname": "Kowalski" },
-{ "id": 2, "name": "Piotr", "surname": "Kacprowicz" },
-{ "id": 3, "name": "Andrzej", "surname": "Nowak" },
-{ "id": 4, "name": "Karol", "surname": "Markowski" },
-{ "id": 5, "name": "Joanna", "surname": "Tracz" },
-{ "id": 6, "name": "Stefan", , "surname": "Tusk" }
-];
+])
+export class AppComponent {
+	title = 'Projekt Angular - Piotr Kacprowicz';
+}
